@@ -7,7 +7,7 @@ class CustomInstallCommand(install):
     def run(self):
         install.run(self)
         
-        cpp_executable = 'Pangaea-1.0-alpha/bin/'
+        cpp_executable = 'Pangaea-v1.0/bin/'
         target_dir = os.path.join(self.install_lib, 'pangaea/bin')
         os.makedirs(target_dir, exist_ok=True)
         shutil.copy(cpp_executable, target_dir)
@@ -28,4 +28,5 @@ setup(
     cmdclass={
         'install': CustomInstallCommand,
     },
+    entry_points={"console_scripts": ["pangaea=pangaea:main"]},
 )
